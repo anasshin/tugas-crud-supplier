@@ -6,12 +6,13 @@ use App\Models\Supplier;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
 
+
 class SupplierController extends Controller
 {
     public function index(): View
     {
         // Fetch all suppliers from the database
-        $supplier = Supplier::all();
+        $supplier = Supplier::orderBy('id', 'asc')->paginate(10);
         return view('supplier.index', ['suppliers' => $supplier]);
     }
 
@@ -30,16 +31,13 @@ class SupplierController extends Controller
         ]);
 
         Supplier::create($request->all());
+
         return redirect()->route('supplier.index')->with('success', 'Supplier created successfully.');
     }
 
     public function edit($id)
     {
-        // Fetch the supplier data for editing
         $data_supplier = Supplier::findOrFail($id);
-        // Pass the supplier data to the edit view
-        // Note: The variable name should not start with a dollar sign in the view
-        // Corrected line: return view('supplier.edit', compact('supplier'));
         return view('supplier.edit', compact('data_supplier'));
     }
 

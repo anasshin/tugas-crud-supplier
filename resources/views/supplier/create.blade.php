@@ -69,7 +69,7 @@
                 </div>
 
                 <div class="flex items-center justify-between">
-                    <button type="submit" class="bg-blue-500  px-4 py-2 rounded hover:bg-blue-600 focus:outline-none focus:ring focus:ring-blue-200">
+                    <button type="submit" class="bg-blue-600  px-4 py-2 rounded hover:bg-blue-800 focus:outline-none text-white focus:ring focus:ring-blue-200">
                         Simpan
                     </button>
                     <a href="{{ route('supplier.index') }}" class="text-gray-600 hover:underline">Batal</a>
